@@ -47,17 +47,13 @@ const Signin = () => {
   }
 
   const onFormSubmit = (userData) => {
-
-    console.log(userData)
     
     if(userData.password === userData.confirmpassword){
       setIsPassword(false)
-      console.log('Success')
       userRegister(userData)
     }
     else{
       setIsPassword(true)
-      console.log('Failure')
     }
   }
 

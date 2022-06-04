@@ -11,9 +11,11 @@ import Addevents from "./components/AddEvents/Addevents"
 import Errorpage from './components/Error404';
 import AddSkills from './components/AddSkills/AddSkills';
 
+
 const App = () => {
 
   const navigate = useNavigate()
+
 
   const logUserOut = () => {
     localStorage.clear()

@@ -30,22 +30,21 @@ const Login = () => {
   const userLogin = async (data) => {
     await signInWithEmailAndPassword(auth, data.email, data.password)
     .then(
-      () => {
+      (response) => {
+        localStorage.setItem('userid', response.user.uid)
         localStorage.setItem("isAuth", true)
         setIsValid(true)
         navigate('/')
       }
     )
     .catch(
-      (err) => {
-        console.log(err.message)
+      () => {
         setIsValid(false)
       }
     )
   }
 
   const onFormSubmit = (loginData) => {
-    console.log(loginData)
     userLogin(loginData)
   }
 
@@ -57,6 +56,12 @@ const Login = () => {
         onSubmit={handleSubmit(onFormSubmit)}
         className="login-form-width bg-light mx-auto border border-dark rounded p-3"
       >
+        {
+          (isValid) && 
+          <div className="alert alert-danger text-center">
+            Username/ Password is invalid
+          </div>
+        }
 
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
