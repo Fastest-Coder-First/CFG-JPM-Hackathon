@@ -1,4 +1,5 @@
 // import React from 'react'
+import './EventsPage.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import React, { Component,useState,useEffect } from "react";
 import {db} from '../../firebase-config';
@@ -56,7 +57,8 @@ const EventsPage = () => {
   },[])
   return (
     <Container fluid>
-      <h2 className="text-center m-2">Events</h2>
+    <div className="backg3" >
+      <h2 className="text-center font-link p-2">Events</h2>
       <Row>
         {
           articles.map(article => (
@@ -76,6 +78,7 @@ const EventsPage = () => {
           ))
         }
       </Row>
+    </div>
     </Container>
   )
 }

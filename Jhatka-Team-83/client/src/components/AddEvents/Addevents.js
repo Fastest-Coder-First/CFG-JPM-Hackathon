@@ -13,8 +13,9 @@ const Addevents = () => {
   }
 
   return (
-    <Container>
-    <h2 className="text-center m-2">Add Events</h2>
+    <Container fluid>
+    <div className="backg2" >
+    <h2 className="text-center font-link p-2">Add Events</h2>
 
     <form
         onSubmit={handleSubmit(onFormSubmit)}
@@ -108,6 +109,7 @@ const Addevents = () => {
           Post It!
         </button>
       </form>
+      </div>
     </Container>
   )
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-
 import './Login.css'
 
 const Login = () => {
@@ -17,8 +16,9 @@ const Login = () => {
   }
 
   return (
-    <Container fluid>
-      <h3 className="text-center m-4">Login</h3>
+    <Container fluid> 
+      <div className="backg" >
+      <h3 className="text-center font-link p-4">Login</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
         className="login-form-width bg-light mx-auto border border-dark rounded p-3"
@@ -69,7 +69,7 @@ const Login = () => {
         </button>
       </form>
 
-
+      </div>
     </Container>
   )
 }

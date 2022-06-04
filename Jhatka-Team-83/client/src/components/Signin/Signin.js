@@ -29,8 +29,9 @@ const Signin = () => {
   }
 
   return (
-    <Container>
-      <h3 className="text-center m-4">Sign In</h3>
+    <Container fluid>
+    <div className="backg1" >
+      <h3 className="text-center p-4 font-link">Sign In</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
         className="signin-form-width bg-light mx-auto border border-dark rounded p-3"
@@ -155,6 +156,7 @@ const Signin = () => {
         </button>
       </form>
     
+      </div>
     </Container>
   )
 }
