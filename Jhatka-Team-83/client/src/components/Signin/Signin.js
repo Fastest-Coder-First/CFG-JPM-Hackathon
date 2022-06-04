@@ -1,18 +1,50 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Container } from 'react-bootstrap'
+import { auth } from '../../firebase-config'
+import { useNavigate } from 'react-router-dom'
+
+import {createUserWithEmailAndPassword} from 'firebase/auth'
 
 import './Signin.css'
 
 const Signin = () => {
   
   const [isPassword, setIsPassword] = useState(false)
+  const navigate = useNavigate()
+
+  useEffect(
+    () => {
+      if(localStorage.getItem("isAuth")){
+        navigate("/")
+      }
+    }
+  )
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const userRegister = async (data) => {
+
+    await createUserWithEmailAndPassword(auth, data.email, data.password)
+    .then(
+      (response) => {
+        console.log(response)
+        localStorage.setItem("isAuth", true)
+        setIsPassword(false)
+        navigate('/')
+      }
+    )
+    .catch(
+      err => {
+        console.log(err.message)
+        setIsPassword(true)
+      }
+    )
+  }
 
   const onFormSubmit = (userData) => {
 
@@ -21,6 +53,7 @@ const Signin = () => {
     if(userData.password === userData.confirmpassword){
       setIsPassword(false)
       console.log('Success')
+      userRegister(userData)
     }
     else{
       setIsPassword(true)
@@ -39,11 +72,11 @@ const Signin = () => {
         {
           (isPassword) && 
           <div className="alert alert-danger text-center">
-            Passwords do not match
+            Passwords do not match/ username already exists
           </div>
         }
 
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <label htmlFor="username" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
@@ -61,7 +94,7 @@ const Signin = () => {
           {errors.username?.type === "required" && (
             <p className="text-danger">*Enter your username</p>
           )}
-        </div>
+        </div> */}
 
         <div className="mb-3">
         <label htmlFor="email" className="form-label">
@@ -83,7 +116,7 @@ const Signin = () => {
           )}
         </div>
 
-        <div className="mb-3">
+        {/* <div className="mb-3">
         <label htmlFor="number" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
@@ -104,7 +137,7 @@ const Signin = () => {
           {
             errors.number?.type === "minLength" && <p className="text-danger">*Phone number should be of 10 digits</p>
           }
-        </div>
+        </div> */}
 
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
