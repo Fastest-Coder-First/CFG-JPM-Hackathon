@@ -4,7 +4,7 @@ import Profile from './Profile'
 function Home() {
   return (
     <div>
-      <Profile/>
+      Home component
     </div>
   )
 }
