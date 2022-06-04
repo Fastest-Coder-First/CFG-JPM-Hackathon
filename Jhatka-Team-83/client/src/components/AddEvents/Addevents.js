@@ -3,6 +3,7 @@ import React, { Component,useState,useEffect } from "react";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import {useNavigate } from 'react-router-dom';
 import {useForm} from 'react-hook-form'
 import {Container} from 'react-bootstrap'
 import { db } from "../../firebase-config";
@@ -18,6 +19,7 @@ import './Addevents.css'
 
 const Addevents = () => {
   // console.log(firebase.firestore.Timestamp.now().toDate().toString())
+  const navigate=useNavigate();
   const {register, handleSubmit, formState: {errors}} = useForm()
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("xyz");
@@ -29,6 +31,7 @@ const Addevents = () => {
   const onFormSubmit = async (campaignDetails) => {
     console.log(newDescription)
     await addDoc(eventsref, { Date:firebase.firestore.Timestamp.now().toDate(),Description: newDescription,Location:newLocation,Star:newStars,Summary:newSummary, Users:[],title: newTitle,urlToImage:newUrl });
+    navigate('/events')
   }
   return (
     <Container>
