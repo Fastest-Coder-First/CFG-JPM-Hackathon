@@ -2,8 +2,8 @@
 
 :root {
   --color-red: rgb(207, 21, 21);
-  --color-pink: rgb(255, 184, 240);
-  --color-grey: rgb(109, 109, 109);
+  --color-pink: rgb(255, 148, 232);
+  --color-grey: rgb(68, 68, 68);
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
@@ -94,6 +94,10 @@ p {
   }
 }
 
+.education-form{
+  width: 35rem;
+}
+
 /*Dashboard Items*/
 
 .section-center {
@@ -174,9 +178,60 @@ p {
   display: grid;
   gap: 1rem 2rem;
   grid-template-columns: 1fr 0.5fr;
+}
+
+.profile .stars{
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+  background-color: var(--color-grey);
 
 }
 
+/*Profile Form Skills*/
+.contactus-section {
+  margin: 3rem 0;
+  
+}
+
+.contactus-section .container .card-form{
+  padding :3.5rem;
+  
+}
+
+
+.contact-input-feild {
+  margin-bottom: 2rem;
+}
+
+.contact-rightside form .form-control {
+  border: 0.5px solid #ced4da;
+  -webkit-appearance: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  padding-left: 1rem;
+  font-weight: lighter;
+}
+
+.contact-rightside form .form-check-input {
+  width: 2rem;
+  height: 2rem;
+}
+
+.form-checkbox-style {
+  margin: 1.5rem 0;
+}
+
+.contact-rightside form .main-hero-para {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: lighter;
+  width: 75%;
+  padding: 0 2rem;
+}
+
+.btn-style{
+  margin-top: 1rem;
+}
 
 
 /*Error Page*/

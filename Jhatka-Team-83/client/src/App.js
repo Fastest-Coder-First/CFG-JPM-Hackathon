@@ -9,6 +9,7 @@ import Profile from "./components/Profile"
 import EventsPage from "./components/EventsPage/EventsPage"
 import Addevents from "./components/AddEvents/Addevents"
 import Errorpage from './components/Error404';
+import AddSkills from './components/AddSkills/AddSkills';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
         <Route path= "/" element= {<Home/>}></Route>     
         <Route path = "/login" element = {<Login/>}></Route>
         <Route path = "/signin" element = {<Signin/>}></Route>
+        <Route path = "/skills" element = {<AddSkills/>}></Route>
         <Route path= "/profile" element={<Profile /> } />
         <Route path ="/events" element={<EventsPage />} />
         <Route path="/addevents" element={<Addevents />} />

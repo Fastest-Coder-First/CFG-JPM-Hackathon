@@ -1,10 +1,11 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import History from './UserHistory/History';
 
 function Profile() {
 
   const UserDetails = async () =>{
-      
+
   }
   
   return (
@@ -19,10 +20,14 @@ function Profile() {
             <h6 className='card-text'>Phone</h6>
         </div>
           <div className='sidebar'>
-            <p>Stars: 4/5</p>
+            <p className='stars'>Stars: 4/5</p>
+            <NavLink to="/skills" className="button-skills btn btn-dark">Add your Skills</NavLink>
           </div>
         </div>
+
+        
      </div>
+     
      </div>
      <History/>
     </>
