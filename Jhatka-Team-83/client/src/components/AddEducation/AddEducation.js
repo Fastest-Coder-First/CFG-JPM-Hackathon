@@ -1,7 +1,8 @@
 import React, {useState } from 'react'
 import { addDoc, collection } from "firebase/firestore";
-import { Container } from 'react-bootstrap'
-import { useForm } from 'react-hook-form'
+import { Container } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import {db} from '../../firebase-config';
 
 function AddSkills() {
   const {
@@ -10,8 +11,17 @@ function AddSkills() {
     formState: { errors },
   } = useForm();
 
-  const onFormSubmit = (EduData) => {
+  const localdb = collection(db, "");
+
+  const onFormSubmit = async(EduData) => {
     console.log(EduData)
+    const {institute,degree,percent,gradyear} = EduData;
+    await addDoc(localdb, {
+         institute,
+         degree,
+         percent,
+         gradyear
+       });
   }
   
 

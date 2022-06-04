@@ -2,6 +2,7 @@ import React, {useState } from 'react'
 import { addDoc, collection } from "firebase/firestore";
 import { Container } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import {db} from '../../firebase-config';
 
 function AddSkills() {
   const {
@@ -10,15 +11,17 @@ function AddSkills() {
     formState: { errors },
   } = useForm();
 
-  const onFormSubmit = (loginData) => {
-    console.log(loginData)
+  const localdb =collection(db, "users");
+
+  const onFormSubmit = async(skillData) => {
+    const {skill1,skill2,skill3,skill4,skill5} = skillData;
+    await addDoc(localdb, {
+         skill1,skill2,skill3,skill4,skill5
+       });
+    console.log(skillData)
   }
   
-  const [userData, setUserData] = useState({
-    username: "",
-    email: "",
-    message: "",
-  });
+
 
   // const massEmaildb = collection();
 
@@ -48,49 +51,49 @@ function AddSkills() {
   return (
     <>
       <Container fluid>
-      <h3 className="text-center m-4">Add Education Details</h3>
+      <h3 className="text-center m-4">Add Your 5 Top Skills</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
         className="education-form bg-light mx-auto border border-dark rounded p-3"
       >
 
         <div className="mb-3">
-          <label htmlFor="institute" className="form-label">
+          <label htmlFor="skill1" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
-              <div>School/College/University</div>
+              <div>Skill 1</div>
             </div>
           </label>
 
           <input
             type="text"
-            id="institute"
+            id="skill1"
             className="form-control"
-            {...register("institute", { required: true })}
+            {...register("skill1", { required: true })}
           />
-          {errors.institute?.type === "required" && (
-            <p className="text-danger">*Enter your Institute</p>
+          {errors.skill1?.type === "required" && (
+            <p className="text-danger">*Enter your Skill</p>
           )}
         </div>
 
         <div className="mb-3">
-          <label htmlFor="degree" className="form-label">
+          <label htmlFor="skill2" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
-              <div>Degree</div>
+              <div>Skill 2</div>
             </div>
           </label>
 
           <input
             type="text"
-            id="Degree"
+            id="skill2"
             className="form-control"
-            {...register("degree", { required: true })}
+            {...register("skill2", { required: true })}
           />
-          {errors.degree?.type === "required" && (
-            <p className="text-danger">*Enter your Degree</p>
+          {errors.skill2?.type === "required" && (
+            <p className="text-danger">*Enter your Skill</p>
           )}
         </div>
        
@@ -99,7 +102,7 @@ function AddSkills() {
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
-              <div>Marks/Percentage/GPA</div>
+              <div>Skill 3</div>
             </div>
           </label>
 
@@ -110,35 +113,53 @@ function AddSkills() {
             {...register("percent", { required: true })}
           />
           {errors.percent?.type === "required" && (
-            <p className="text-danger">*Enter your marks</p>
+            <p className="text-danger">*Enter your Skill</p>
           )}
         </div>
 
-         <div className="mb-3">
-          <label htmlFor="gradyear" className="form-label">
+        <div className="mb-3">
+          <label htmlFor="percent" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
-              <div>Graduation Date</div>
+              <div>Skill 4</div>
             </div>
           </label>
 
           <input
-            type="date"
-            id="gradyear"
+            type="text"
+            id="percent"
             className="form-control"
-            {...register("gradyear", { required: true })}
+            {...register("percent", { required: true })}
           />
-          {errors.gradyear?.type === "required" && (
-            <p className="text-danger">*Enter your the Data</p>
+          {errors.percent?.type === "required" && (
+            <p className="text-danger">*Enter your Skill</p>
           )}
         </div>
 
+        <div className="mb-3">
+          <label htmlFor="percent" className="form-label">
+            <div className="d-flex align-items-center gap-2">
+              <div>
+              </div>
+              <div>Skill 5</div>
+            </div>
+          </label>
+
+          <input
+            type="text"
+            id="percent"
+            className="form-control"
+            {...register("percent", { required: true })}
+          />
+          {errors.percent?.type === "required" && (
+            <p className="text-danger">*Enter your Skill</p>
+          )}
+        </div>
+        
+
         <button className="d-block mx-auto btn btn-primary mb-2" type="submit">
           Submit
-        </button>
-        <button className="d-block mx-auto btn btn-primary" type="submit">
-          Submit and Add Another
         </button>
       </form>
 

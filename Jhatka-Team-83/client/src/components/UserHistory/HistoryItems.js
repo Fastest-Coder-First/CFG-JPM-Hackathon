@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { getDocs, addDoc, collection } from "firebase/firestore";
+import {db,auth} from '../../firebase-config';
+import { onAuthStateChanged} from "firebase/auth";
 
 function HistoryItems({items}) {
-  
   
   
   return (

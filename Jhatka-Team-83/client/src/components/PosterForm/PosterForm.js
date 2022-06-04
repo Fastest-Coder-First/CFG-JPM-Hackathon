@@ -1,4 +1,5 @@
 import React from 'react'
+import {db} from '../../firebase-config';
 
 function PosterForm() {
   const {
@@ -7,9 +8,14 @@ function PosterForm() {
     formState: { errors },
   } = useForm();
 
-  const onFormSubmit = (EduData) => {
+  const localdb = collection(db, "");
+  const onFormSubmit = (PosterData) => {
+    const {title,subheading,content,img} = userData;
 
-    console.log(EduData)
+    await addDoc(localdb, {
+         title,subheading,content,img
+       });
+    console.log(PosterData);
     
   }
   
@@ -110,7 +116,7 @@ function PosterForm() {
           </label>
 
           <input
-            type="file"
+            type="text"
             id="img"
             className="form-control"/>
           </div>
@@ -119,7 +125,6 @@ function PosterForm() {
           Submit
         </button>
       </form>
-
 
     </Container>
 
