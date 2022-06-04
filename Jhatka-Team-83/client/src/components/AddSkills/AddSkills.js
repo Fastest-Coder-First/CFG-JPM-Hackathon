@@ -16,7 +16,7 @@ function AddSkills() {
   const onFormSubmit = async(skillData) => {
     const {skill1,skill2,skill3,skill4,skill5} = skillData;
     await addDoc(localdb, {
-         skill1,skill2,skill3,skill4,skill5
+         skills:{skill1,skill2,skill3,skill4,skill5}
        });
     console.log(skillData)
   }

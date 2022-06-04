@@ -1,21 +1,38 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { addDoc, collection } from "firebase/firestore";
+import { Container } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
 import {db} from '../../firebase-config';
+import {useNavigate} from 'react-router-dom';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore'
+import firebase from 'firebase/compat/app';
 
 function PosterForm() {
+
+  const navigate = useNavigate();
+  const [newTitle, setNewTitle] = useState("");
+  const [newDescription, setNewDescription] = useState("");
+  const [newSummary, setNewSummary] = useState("");
+  const [newLocation, setNewLocation]=useState("");
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const localdb = collection(db, "");
-  const onFormSubmit = (PosterData) => {
-    const {title,subheading,content,img} = userData;
+  const localdb = collection(db, "Poster");
+
+  const onFormSubmit = async(PosterData) => {
+    const {Title,Subheading,Content,Image} = PosterData;
 
     await addDoc(localdb, {
-         title,subheading,content,img
+        Date:firebase.firestore.Timestamp.now().toDate(),
+        Title:newTitle,Subheading:newDescription,Content:newSummary,Image:newLocation
        });
     console.log(PosterData);
+    navigate('/postertemplate')
     
   }
   
@@ -38,7 +55,7 @@ function PosterForm() {
   return (
     <>
       <Container fluid>
-      <h3 className="text-center m-4">Add Education Details</h3>
+      <h3 className="text-center m-4">Add Poster Details</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
         className="education-form bg-light mx-auto border border-dark rounded p-3"
@@ -55,17 +72,21 @@ function PosterForm() {
 
           <input
             type="text"
-            id="title"
+            id="Title"
+            onChange={(event) => {
+              setNewTitle(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("title", { required: true })}
+            //{...register("Title", { required: true })}
           />
-          {errors.title?.type === "required" && (
+          {errors.Title?.type === "required" && (
             <p className="text-danger">*Enter the title</p>
           )}
         </div>
 
         <div className="mb-3">
-          <label htmlFor="subheading" className="form-label">
+          <label htmlFor="Subheading" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
@@ -75,17 +96,21 @@ function PosterForm() {
 
           <input
             type="text"
-            id="subheading"
+            id="Subheading"
             className="form-control"
-            {...register("subheading", { required: true })}
+             onChange={(event) => {
+              setNewDescription(event.target.value);
+            }
+          }
+            //{...register("Subheading", { required: true })}
           />
-          {errors.subheading?.type === "required" && (
+          {errors.Subheading?.type === "required" && (
             <p className="text-danger">*Enter the subheading</p>
           )}
         </div>
        
          <div className="mb-3">
-          <label htmlFor="content" className="form-label">
+          <label htmlFor="Content" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
@@ -96,18 +121,22 @@ function PosterForm() {
           <textarea
             cols='10'
             type="text"
-            id="content"
+            id="Content"
+            onChange={(event) => {
+              setNewSummary(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("content", { required: true })}
+            //{...register("Content", { required: true })}
           />
-          {errors.content?.type === "required" && (
+          {errors.Content?.type === "required" && (
             <p className="text-danger">*Enter the Content</p>
           )}
         </div>
 
         
         <div className="mb-3">
-          <label htmlFor="img" className="form-label">
+          <label htmlFor="Image" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
@@ -117,7 +146,11 @@ function PosterForm() {
 
           <input
             type="text"
-            id="img"
+            id="Image"
+            onChange={(event) => {
+              setNewLocation(event.target.value);
+            }
+          }
             className="form-control"/>
           </div>
 

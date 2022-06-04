@@ -11,6 +11,8 @@ import Addevents from "./components/AddEvents/Addevents";
 import Errorpage from './components/Error404';
 import AddSkills from './components/AddSkills/AddSkills';
 import AddEducation from './components/AddEducation/AddEducation';
+import PosterForm from './components/PosterForm/PosterForm';
+import Poster from './components/TemplatePoster/Poster';
 
 const App = () => {
 
@@ -37,6 +39,7 @@ const App = () => {
                 <NavLink className="nav-link" to='/profile'>Profile</NavLink>
                 <NavLink className="nav-link" to="/events">Events</NavLink>
                 <NavLink className="nav-link" to="/addevents">Add Events</NavLink>
+                <NavLink className="nav-link" to="/addposter">Add Poster</NavLink>
               </Nav>
               <div className="ms-auto">
                 <button className="btn btn-primary" onClick={logUserOut}>Logout</button>
@@ -66,7 +69,10 @@ const App = () => {
         <Route path= "/profile" element={<Profile /> } />
         <Route path ="/events" element={<EventsPage />} />
         <Route path="/addevents" element={<Addevents />} />
+        <Route path="/addposter" element={<PosterForm/>}></Route>
+        <Route path="/postertemplate" element={<Poster/>}></Route>
         <Route path = "*" element = {<Errorpage/>}></Route>
+
       </Routes>
     </>
   )

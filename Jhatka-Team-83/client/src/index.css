@@ -238,6 +238,62 @@ p {
   margin-top: 1rem;
 }
 
+/*Home Page*/
+header {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-hero-container {
+  height: 80vh;
+  display: flex;
+  /* background-color: aqua; */
+}
+
+.main-hero-container h1 {
+  text-transform: capitalize;
+  font-weight: bolder;
+}
+
+.main-hero-para {
+  font-size: 1rem;
+  margin: 2rem 0 1rem 0;
+  font-weight: lighter;
+  width: 75%;
+}
+
+.main-hero-container h3 {
+  font-weight: lighter;
+  margin-bottom: 2rem;
+}
+
+
+
+
+/* right side of hero section  */
+
+.main-herosection-images {
+  position: relative;
+}
+
+.main-herosection-images img {
+  width: 60%;
+  height: 60%;
+  margin-top:3rem;
+  box-shadow: 0 0.8rem 0.8rem rgba(0, 0, 0, 0.25);
+  border-radius: 1.5rem;
+  position: absolute;
+}
+
+.main-herosection-images .main-hero-img2 {
+  position: absolute;
+  width: 40%;
+  height: 30%;
+  left: 55%;
+  top: -2%;
+  box-shadow: 0.8rem 0 0.8rem rgba(0, 0, 0, 0.25);
+}
+
 /*Poster Template*/
 .container .posts-container .post {
   width: 100%;

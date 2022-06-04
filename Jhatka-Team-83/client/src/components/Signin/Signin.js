@@ -1,17 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Container } from 'react-bootstrap'
-import { auth } from '../../firebase-config'
 import { useNavigate } from 'react-router-dom'
+import { getDocs, addDoc, collection } from "firebase/firestore";
+import {db,auth} from '../../firebase-config';
+import { onAuthStateChanged} from "firebase/auth";
+import { NavLink } from 'react-router-dom';
 
 import {createUserWithEmailAndPassword} from 'firebase/auth'
 
 import './Signin.css'
 
 const Signin = () => {
-  
+  const [user, setUser] = useState("");
   const [isPassword, setIsPassword] = useState(false)
   const navigate = useNavigate()
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
+  const userData=collection(db,"Users");
+
+  // const onCreate = async (user) =>{
+  //   await addDoc(userData, {
+  //        name: ,
+  //        email:user.email,
+  //        password:user.password,
+  //        stars:"2",
+
+  //      });
+  // }
 
   useEffect(
     () => {
