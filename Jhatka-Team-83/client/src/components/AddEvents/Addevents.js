@@ -36,19 +36,51 @@ const Addevents = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="context" className="form-lable">
-            Context
+          <label htmlFor="description" className="form-lable">
+            Description
           </label>
           <textarea type="text"
-            id="context"
+            id="description"
             rows="10"
             className="form-control"
-            {...register("context", { required: true })}
+            {...register("description", { required: true })}
           />
-          {errors.context?.type === "required" && (
-            <p className="text-danger">*Enter your context</p>
+          {errors.description?.type === "required" && (
+            <p className="text-danger">*Enter your description</p>
           )}
         </div>
+
+        <div className="mb-3">
+          <label htmlFor="summary" className="form-lable">
+            Summary
+          </label>
+          <textarea type="text"
+            id="summary"
+            rows="5"
+            className="form-control"
+            {...register("summary", { required: true })}
+          />
+          {errors.summary?.type === "required" && (
+            <p className="text-danger">*Enter your summary</p>
+          )}
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="image" className="form-label">
+            Upload image
+          </label>
+
+          <input type="file" accept="image/*" id="image" className="form-control" />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="date" className="form-label">
+            Date
+          </label>
+          
+          <input type="date" id="date" className="form-control" />
+        </div>
+
 
         <div className="mb-3"> 
           <div className="mb-2">Type of event</div>
