@@ -49,7 +49,6 @@ const EventsPage = () => {
   useEffect(()=>{
     const getEvents=async()=>{
       const data=await getDocs(eventsref);
-      // console.log(data);
       setArticles(data.docs.map((doc)=>({...doc.data(),id:doc.id})));
     };
     getEvents();
@@ -62,11 +61,12 @@ const EventsPage = () => {
           articles.map(article => (
             <Col sm={12} md={6} lg={4} className="p-2" key={article.id}>
               <div className="card h-100 m-2 shadow mb-5 bg-light rounded">
-                <div className="card-header">
+              <img src={article.urlToImage} className="card-img-top" alt="..."/>
+                <div className="card-header fw-bold">
                   {article.title}
                 </div>
                 <div className="card-body">
-                  {article.Description}
+                  {article.Summary}
                 </div>
                 <div>
                   <button className="btn btn-danger m-2">Read more</button>
