@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import Signin from "./components/Signin/Signin"
 import Home from "./components/Home";
 import Errorpage from './components/Error404';
+import AddSkills from './components/AddSkills/AddSkills';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path= "/" element= {<Home/>}></Route>     
         <Route path = "/login" element = {<Login/>}></Route>
         <Route path = "/signin" element = {<Signin/>}></Route>
+        <Route path = "/skills" element = {<AddSkills/>}></Route>
         <Route path = "*" element = {<Errorpage/>}></Route>
         
       </Routes>
