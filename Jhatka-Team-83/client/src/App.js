@@ -3,13 +3,14 @@ import { Route, Routes, NavLink } from "react-router-dom";
 import { Container, Navbar, Nav } from 'react-bootstrap'
 
 import Login from "./components/Login/Login";
-import Signin from "./components/Signin/Signin"
+import Signin from "./components/Signin/Signin";
 import Home from "./components/Home";
-import Profile from "./components/Profile"
-import EventsPage from "./components/EventsPage/EventsPage"
-import Addevents from "./components/AddEvents/Addevents"
+import Profile from "./components/Profile/Profile";
+import EventsPage from "./components/EventsPage/EventsPage";
+import Addevents from "./components/AddEvents/Addevents";
 import Errorpage from './components/Error404';
 import AddSkills from './components/AddSkills/AddSkills';
+import AddEducation from './components/AddEducation/AddEducation';
 
 const App = () => {
   return (
@@ -37,7 +38,8 @@ const App = () => {
         <Route path= "/" element= {<Home/>}></Route>     
         <Route path = "/login" element = {<Login/>}></Route>
         <Route path = "/signin" element = {<Signin/>}></Route>
-        <Route path = "/skills" element = {<AddSkills/>}></Route>
+        <Route path = "/addskills" element = {<AddSkills/>}></Route>
+        <Route path = "/addeducation" element = {<AddEducation/>}></Route>
         <Route path= "/profile" element={<Profile /> } />
         <Route path ="/events" element={<EventsPage />} />
         <Route path="/addevents" element={<Addevents />} />

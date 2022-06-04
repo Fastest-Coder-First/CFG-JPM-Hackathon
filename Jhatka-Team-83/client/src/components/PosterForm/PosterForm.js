@@ -1,9 +1,6 @@
-import React, {useState } from 'react'
-import { addDoc, collection } from "firebase/firestore";
-import { Container } from 'react-bootstrap'
-import { useForm } from 'react-hook-form'
+import React from 'react'
 
-function AddSkills() {
+function PosterForm() {
   const {
     register,
     handleSubmit,
@@ -11,7 +8,9 @@ function AddSkills() {
   } = useForm();
 
   const onFormSubmit = (EduData) => {
+
     console.log(EduData)
+    
   }
   
 
@@ -40,90 +39,84 @@ function AddSkills() {
       >
 
         <div className="mb-3">
-          <label htmlFor="institute" className="form-label">
+          <label htmlFor="title" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
-              <div>School/College/University</div>
+              <div>Enter the Title</div>
             </div>
           </label>
 
           <input
             type="text"
-            id="institute"
+            id="title"
             className="form-control"
-            {...register("institute", { required: true })}
+            {...register("title", { required: true })}
           />
-          {errors.institute?.type === "required" && (
-            <p className="text-danger">*Enter your Institute</p>
+          {errors.title?.type === "required" && (
+            <p className="text-danger">*Enter the title</p>
           )}
         </div>
 
         <div className="mb-3">
-          <label htmlFor="degree" className="form-label">
+          <label htmlFor="subheading" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
-              <div>Degree</div>
+              <div>Subheading</div>
             </div>
           </label>
 
           <input
             type="text"
-            id="degree"
+            id="subheading"
             className="form-control"
-            {...register("degree", { required: true })}
+            {...register("subheading", { required: true })}
           />
-          {errors.degree?.type === "required" && (
-            <p className="text-danger">*Enter your Degree</p>
+          {errors.subheading?.type === "required" && (
+            <p className="text-danger">*Enter the subheading</p>
           )}
         </div>
        
-        <div className="mb-3">
-          <label htmlFor="percent" className="form-label">
-            <div className="d-flex align-items-center gap-2">
-              <div>
-              </div>
-              <div>Marks/Percentage/GPA</div>
-            </div>
-          </label>
-
-          <input
-            type="text"
-            id="percent"
-            className="form-control"
-            {...register("percent", { required: true })}
-          />
-          {errors.percent?.type === "required" && (
-            <p className="text-danger">*Enter your marks</p>
-          )}
-        </div>
-
          <div className="mb-3">
-          <label htmlFor="gradyear" className="form-label">
+          <label htmlFor="content" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
-              <div>Graduation Date</div>
+              <div>Content</div>
+            </div>
+          </label>
+
+          <textarea
+            cols='10'
+            type="text"
+            id="content"
+            className="form-control"
+            {...register("content", { required: true })}
+          />
+          {errors.content?.type === "required" && (
+            <p className="text-danger">*Enter the Content</p>
+          )}
+        </div>
+
+        
+        <div className="mb-3">
+          <label htmlFor="img" className="form-label">
+            <div className="d-flex align-items-center gap-2">
+              <div>
+              </div>
+              <div>Add the image</div>
             </div>
           </label>
 
           <input
-            type="date"
-            id="gradyear"
-            className="form-control"
-            {...register("gradyear", { required: true })}
-          />
-          {errors.gradyear?.type === "required" && (
-            <p className="text-danger">*Enter your the Data</p>
-          )}
-        </div>
+            type="file"
+            id="img"
+            className="form-control"/>
+          </div>
 
         <button className="d-block mx-auto btn btn-primary mb-2" type="submit">
           Submit
-        </button>
-        <button className="d-block mx-auto btn btn-primary" type="submit">
-          Submit and Add Another
         </button>
       </form>
 
@@ -134,4 +127,4 @@ function AddSkills() {
   )
 }
 
-export default AddSkills
+export default PosterForm

@@ -175,16 +175,22 @@ p {
   margin-right: auto;
   width: 100%;
   max-width: 1000px;
+  padding-left: 1.5rem;
+}
+
+.card-wrapper{
   display: grid;
-  gap: 1rem 2rem;
-  grid-template-columns: 1fr 0.5fr;
+    gap: 1rem 2rem;
+    grid-template-columns: 1.5fr 0.5fr;
+}
+
+.profile .sidebar{
+  padding-top: 1rem;
 }
 
 .profile .stars{
   margin-bottom: 0.5rem;
   padding-bottom: 0;
-  background-color: var(--color-grey);
-
 }
 
 /*Profile Form Skills*/
@@ -195,7 +201,6 @@ p {
 
 .contactus-section .container .card-form{
   padding :3.5rem;
-  
 }
 
 
@@ -231,6 +236,46 @@ p {
 
 .btn-style{
   margin-top: 1rem;
+}
+
+/*Poster Template*/
+.container .posts-container .post {
+  width: 100%;
+  padding: 2rem;
+  border-radius: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+.container .posts-container .post .image {
+  height: 40rem;
+  width: 100%;
+  border-radius: .5rem;
+  object-fit: cover;
+}
+
+.container .posts-container .post .date {
+  padding: 2rem 0;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--orange);
+}
+
+.container .posts-container .post .title {
+  padding-top: 1.5rem;
+  font-size: 2.5rem;
+  color: var(--black);
+}
+
+.container .posts-container .post .text {
+  color: var(--black);
+  font-size: 1.8rem;
+  line-height: 1.7;
+}
+
+.container .posts-container .post h4 {
+  color: var(--orange);
+  font-size: 2rem;
+  line-height: 2;
 }
 
 
