@@ -1,17 +1,35 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
+import React, { Component,useState,useEffect } from "react";
+// import firebase from 'firebase';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import {useForm} from 'react-hook-form'
 import {Container} from 'react-bootstrap'
-
+import { db } from "../../firebase-config";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import './Addevents.css'
 
 const Addevents = () => {
-
+  // console.log(firebase.firestore.Timestamp.now().toDate().toString())
   const {register, handleSubmit, formState: {errors}} = useForm()
-
-  const onFormSubmit = (campaignDetails) => {
-    console.log(campaignDetails)
+  const [newTitle, setNewTitle] = useState("");
+  const [newDescription, setNewDescription] = useState("xyz");
+  const [newSummary, setNewSummary] = useState("");
+  const [newLocation, setNewLocation]=useState("");
+  const [newStars,setNewStars]=useState(0);
+  const [newUrl,setNewUrl]=useState("");
+  const eventsref=collection(db,"Events");
+  const onFormSubmit = async (campaignDetails) => {
+    console.log(newDescription)
+    await addDoc(eventsref, { Date:firebase.firestore.Timestamp.now().toDate(),Description: newDescription,Location:newLocation,Star:newStars,Summary:newSummary, Users:[],title: newTitle,urlToImage:newUrl });
   }
-
   return (
     <Container>
     <h2 className="text-center m-2">Add Events</h2>
@@ -27,12 +45,17 @@ const Addevents = () => {
           <input
             type="text"
             id="title"
+            onChange={(event) => {
+              setNewTitle(event.target.value);
+            }
+          }
+
             className="form-control"
-            {...register("title", { required: true })}
+            // {...register("title", { required: true })}
           />
-          {errors.title?.type === "required" && (
+          {/* {errors.title?.type === "required" && (
             <p className="text-danger">*Enter your title</p>
-          )}
+          )} */}
         </div>
 
         <div className="mb-3">
@@ -43,7 +66,14 @@ const Addevents = () => {
             id="description"
             rows="10"
             className="form-control"
-            {...register("description", { required: true })}
+
+            onChange={(event) => {
+              console.log('we have a change');
+              setNewDescription(event.target.value);
+              console.log(newDescription);
+            }
+          }
+            // {...register("description", { required: true })}
           />
           {errors.description?.type === "required" && (
             <p className="text-danger">*Enter your description</p>
@@ -56,9 +86,14 @@ const Addevents = () => {
           </label>
           <textarea type="text"
             id="summary"
+            onChange={(event) => {
+              setNewSummary(event.target.value);
+            }
+          }
             rows="5"
             className="form-control"
-            {...register("summary", { required: true })}
+            
+            // {...register("summary", { required: true })}
           />
           {errors.summary?.type === "required" && (
             <p className="text-danger">*Enter your summary</p>
@@ -66,13 +101,62 @@ const Addevents = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="image" className="form-label">
-            Upload image
+          <label htmlFor="location" className="form-lable">
+            Location
           </label>
+          <textarea type="text"
+            id="location"
+            onChange={(event) => {
+              setNewLocation(event.target.value);
+            }
+          }
 
-          <input type="file" accept="image/*" id="image" className="form-control" />
+            rows="1"
+            className="form-control"
+            // {...register("location", { required: true })}
+          />
+          {errors.summary?.type === "required" && (
+            <p className="text-danger">*Enter the event location</p>
+          )}
+        </div>
+        <div className="mb-3">
+          <label htmlFor="stars" className="form-lable">
+            Stars
+          </label>
+          <input type="number"
+            id="stars"
+            rows="1"
+            onChange={(event) => {
+              setNewStars(event.target.value);
+            }
+          }
+            className="form-control"
+            // {...register("stars", { required: true })}
+          />
+          {errors.summary?.type === "required" && (
+            <p className="text-danger">*Enter the stars</p>
+          )}
         </div>
 
+        <div className="mb-3">
+          <label htmlFor="location" className="form-lable">
+            Upload image URL
+          </label>
+          <textarea type="text"
+            id="imgUrl"
+            onChange={(event) => {
+              setNewUrl(event.target.value);
+            }
+          }
+
+            rows="1"
+            className="form-control"
+            // {...register("location", { required: true })}
+          />
+          {errors.summary?.type === "required" && (
+            <p className="text-danger">*Enter url of image</p>
+          )}
+        </div>
         <div className="mb-3">
           <label htmlFor="date" className="form-label">
             Date
