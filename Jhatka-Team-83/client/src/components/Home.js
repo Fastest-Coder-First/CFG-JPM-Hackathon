@@ -1,11 +1,15 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 import Profile from './Profile'
+import './Home.css'
 
 function Home() {
   return (
-    <div>
-      Home component
-    </div>
+    <Container fluid> 
+      <div className="backg6">
+        Home component
+      </div>
+    </Container>
   )
 }
 
