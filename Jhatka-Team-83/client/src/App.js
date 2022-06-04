@@ -3,8 +3,8 @@ import { Route, Routes, NavLink } from "react-router-dom";
 import { Container, Navbar, Nav } from 'react-bootstrap'
 
 
-import Login from "./components/Login";
-import Signin from "./components/Signin"
+import Login from "./components/Login/Login";
+import Signin from "./components/Signin/Signin"
 import Home from "./components/Home";
 
 const App = () => {
