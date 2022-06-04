@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes, NavLink } from "react-router-dom";
+import { Route, Routes, NavLink, useNavigate } from "react-router-dom";
 import { Container, Navbar, Nav } from 'react-bootstrap'
 
 import Login from "./components/Login/Login";
@@ -12,6 +12,14 @@ import Errorpage from './components/Error404';
 import AddSkills from './components/AddSkills/AddSkills';
 
 const App = () => {
+
+  const navigate = useNavigate()
+
+  const logUserOut = () => {
+    localStorage.clear()
+    navigate('/login')
+  }
+
   return (
     <>
 
@@ -20,15 +28,30 @@ const App = () => {
       <NavLink className="navbar-brand" to="/">Jhatka</NavLink>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="me-auto">
-          <NavLink className="nav-link" to='/profile'>Profile</NavLink>
-          <NavLink className="nav-link" to="/events">Events</NavLink>
-          <NavLink className="nav-link" to="/addevents">Add Events</NavLink>
-        </Nav>
-        <Nav className="ms-auto">
-          <NavLink className="nav-link" to='/login'>Login</NavLink>
-          <NavLink className="nav-link" to='/signin'>Sign In</NavLink>
-        </Nav>
+        {
+          localStorage.getItem('isAuth') && 
+          (
+            <>
+              <Nav className="me-auto">
+                <NavLink className="nav-link" to='/profile'>Profile</NavLink>
+                <NavLink className="nav-link" to="/events">Events</NavLink>
+                <NavLink className="nav-link" to="/addevents">Add Events</NavLink>
+              </Nav>
+              <div className="ms-auto">
+                <button className="btn btn-primary" onClick={logUserOut}>Logout</button>
+              </div>
+            </>
+          )
+        }
+        {
+          !localStorage.getItem('isAuth') && 
+          (
+            <Nav className="ms-auto">
+              <NavLink className="nav-link" to='/login'>Login</NavLink>
+              <NavLink className="nav-link" to='/signin'>Sign In</NavLink>
+            </Nav>
+          )
+        }
       </Navbar.Collapse>
       </Container>
     </Navbar>
