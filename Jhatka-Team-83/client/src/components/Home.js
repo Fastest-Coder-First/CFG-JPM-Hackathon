@@ -1,8 +1,11 @@
 import React from 'react'
+import Profile from './Profile'
 
-const Home = () => {
+function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <Profile/>
+    </div>
   )
 }
 
