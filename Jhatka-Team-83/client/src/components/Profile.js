@@ -1,10 +1,10 @@
 import React from 'react'
-import History from './History';
+import History from './UserHistory/History';
 
 function Profile() {
 
   const UserDetails = async () =>{
-
+      
   }
   return (
     <>

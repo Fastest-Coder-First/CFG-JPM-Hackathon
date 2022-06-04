@@ -1,5 +1,5 @@
 import React from 'react'
-import DashItems from '../TempData/DashData';
+import DashItems from "../TempData/DashData";
 import HistoryItems from './HistoryItems';
 
 
