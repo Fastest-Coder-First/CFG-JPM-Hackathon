@@ -7,6 +7,7 @@ function Profile() {
   const UserDetails = async () =>{
 
   }
+  
   return (
     <>
      <div className='profile-wrapper'>
