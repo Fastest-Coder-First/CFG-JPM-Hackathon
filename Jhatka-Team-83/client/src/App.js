@@ -30,6 +30,7 @@ const App = () => {
         <Route path = "/login" element = {<Login/>}></Route>
         <Route path = "/signin" element = {<Signin/>}></Route>
         <Route path = "*" element = {<Errorpage/>}></Route>
+        
       </Routes>
     </>
   )
