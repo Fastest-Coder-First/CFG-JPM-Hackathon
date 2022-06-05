@@ -27,10 +27,18 @@ const Addevents = () => {
   const [newLocation, setNewLocation]=useState("");
   const [newStars,setNewStars]=useState(0);
   const [newUrl,setNewUrl]=useState("");
+  const [newtype,setType]=useState("");
   const eventsref=collection(db,"Events");
   const onFormSubmit = async (campaignDetails) => {
-    console.log(newDescription)
-    await addDoc(eventsref, { Date:firebase.firestore.Timestamp.now().toDate(),Description: newDescription,Location:newLocation,Star:newStars,Summary:newSummary, Users:[],title: newTitle,urlToImage:newUrl });
+    if(newtype=='Petition')
+    {
+      var petref=collection(db,"Petitions");
+      await addDoc(petref,{date:firebase.firestore.Timestamp.now().toDate(),Description: newDescription,Star:newStars,Summary:newSummary, Users:[],title: newTitle,urlToImage:newUrl})
+    }
+    else{
+
+      await addDoc(eventsref, { Date:firebase.firestore.Timestamp.now().toDate(),Description: newDescription,Location:newLocation,Star:newStars,Summary:newSummary, Users:[],title: newTitle,urlToImage:newUrl });
+    }
     navigate('/events')
   }
   return (
@@ -170,7 +178,10 @@ const Addevents = () => {
         </div>
 
 
-        <div className="mb-3"> 
+        <div className="mb-3" onChange={(event) => {
+              setType(event.target.value);
+            }
+          }> 
           <div className="mb-2">Type of event</div>
           <div className="form-check">
             <input className="form-check-input" type="radio" name="flexRadioDefault" value="Petition" id="flexRadioDefault1" {...register('eventType', {required: true})} />

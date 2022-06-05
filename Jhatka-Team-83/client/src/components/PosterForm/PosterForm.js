@@ -7,6 +7,8 @@ import {useNavigate} from 'react-router-dom';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore'
 import firebase from 'firebase/compat/app';
+import './PosterForm.css';
+import ReactColorPicker from '@super-effective/react-color-picker';
 
 function PosterForm() {
 
@@ -15,6 +17,7 @@ function PosterForm() {
   const [newDescription, setNewDescription] = useState("");
   const [newSummary, setNewSummary] = useState("");
   const [newLocation, setNewLocation]=useState("");
+  const [color, setColor] = useState('#3cd6bf');
 
   const {
     register,
@@ -25,36 +28,25 @@ function PosterForm() {
   const localdb = collection(db, "Poster");
 
   const onFormSubmit = async(PosterData) => {
-    const {Title,Subheading,Content,Image} = PosterData;
+    const {Title,Subheading,Content,Image,Color} = PosterData;
 
     await addDoc(localdb, {
         Date:firebase.firestore.Timestamp.now().toDate(),
-        Title:newTitle,Subheading:newDescription,Content:newSummary,Image:newLocation
+        Title:newTitle,Subheading:newDescription,Content:newSummary,Image:newLocation,Color:color
        });
     console.log(PosterData);
     navigate('/postertemplate')
     
   }
-  
 
-  // const submitData = async (event) => {
-  //   event.preventDefault();
-  //   const {username, email, message} = userData;
-
-  //    if (username && email && message){
-  //      await addDoc(massEmaildb, {
-  //        username,
-  //        email,
-  //        message
-  //      });
-  //    }
-  // }
-
-
+  const onColorChange = (updatedColor) => {
+    setColor(updatedColor);
+  };
 
   return (
     <>
       <Container fluid>
+      <div className='backg'>
       <h3 className="text-center m-4">Add Poster Details</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
@@ -140,7 +132,7 @@ function PosterForm() {
             <div className="d-flex align-items-center gap-2">
               <div>
               </div>
-              <div>Add the image</div>
+              <div>Add the Image</div>
             </div>
           </label>
 
@@ -154,11 +146,35 @@ function PosterForm() {
             className="form-control"/>
           </div>
 
+
+          <div className="mb-3">
+          <label htmlFor="Color" className="form-label">
+            <div className="d-flex align-items-center gap-2">
+              <div>
+              </div>
+              <div>Add the Colour</div>
+            </div>
+          </label>
+          <ReactColorPicker color={color} onChange={onColorChange} />
+
+          <input
+            type="text"
+            id="Color"
+            value={color}
+            onChange={(event) => {
+              setColor(event.target.value);
+            }
+          }
+            className="form-control"/>
+          </div>
+
+          
+
         <button className="d-block mx-auto btn btn-primary mb-2" type="submit">
           Submit
         </button>
       </form>
-
+      </div>
     </Container>
 
     </>

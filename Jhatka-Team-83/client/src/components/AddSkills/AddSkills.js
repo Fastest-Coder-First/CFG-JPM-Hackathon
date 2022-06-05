@@ -3,7 +3,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { Container } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import {db} from '../../firebase-config';
-import './AddSkills.css'
+import './AddSkills.css';
 
 function AddSkills() {
   const {register, handleSubmit, formState: {errors}} = useForm()
@@ -54,7 +54,7 @@ function AddSkills() {
     <>
       <Container fluid>
       <div className="backg4">
-      <h3 className="text-center m-4">Add Your 5 Top Skills</h3>
+      <h3 className="text-center font-link p-4">Add Your 5 Top Skills</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
         className="education-form bg-light mx-auto border border-dark rounded p-3"
@@ -121,7 +121,7 @@ function AddSkills() {
             type="text"
             id="percent"
             onChange={(event) => {
-              setSkill1(event.target.value);
+              setSkill3(event.target.value);
             }
           }
             className="form-control"
@@ -145,7 +145,7 @@ function AddSkills() {
             type="text"
             id="percent"
             onChange={(event) => {
-              setSkill1(event.target.value);
+              setSkill4(event.target.value);
             }
           }
             className="form-control"
@@ -169,7 +169,7 @@ function AddSkills() {
             type="text"
             id="percent"
             onChange={(event) => {
-              setSkill1(event.target.value);
+              setSkill5(event.target.value);
             }
           }
             className="form-control"

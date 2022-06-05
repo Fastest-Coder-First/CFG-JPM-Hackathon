@@ -1,8 +1,15 @@
 import React from 'react'
+import './Home.css';
+import { Container } from 'react-bootstrap';
+import hi1 from './images/Home1.jpg';
+import hi2 from './images/Home2.jpg';
 
 function Home() {
   return (
-    <><header>
+    <>
+    <Container fluid>
+      <div className="backg6">
+    <header>
         <section className="container main-hero-container">
           <div className="row">
             <div className="col-12 col-lg-6 header-left-side d-flex justify-content-center flex-column align-items-start ">
@@ -21,12 +28,12 @@ function Home() {
             {/*  --------------- main header right side--------------  */}
             <div className="col-12 col-lg-6 header-right-side d-flex justify-content-center align-items-center main-herosection-images">
               <img
-                //src={image}
+                src={hi2}
                 alt="heroimg"
                 className="img-fluid"
               />
               <img
-                //src={image}
+                src={hi1}
                 alt="heroimg4"
                 className="img-fluid main-hero-img2"
               />
@@ -34,7 +41,8 @@ function Home() {
           </div>
         </section>
       </header>
-      
+      </div>
+    </Container>
     </>
   )
 }

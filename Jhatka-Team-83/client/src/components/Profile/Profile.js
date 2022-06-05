@@ -4,6 +4,7 @@ import {db,auth} from '../../firebase-config';
 import { onAuthStateChanged} from "firebase/auth";
 import { NavLink } from 'react-router-dom';
 import History from '../UserHistory/History';
+import './Profile.css';
 
 function Profile() {
   const [details, setUserDetails] = useState([]);
@@ -21,6 +22,7 @@ function Profile() {
   
   return (
     <>
+    <div className="backg5">
      <div className='profile-wrapper'>
        
      <div className='profile card '>
@@ -43,6 +45,7 @@ function Profile() {
      
      </div>
      <History/>
+     </div>
     </>
   )
 }
