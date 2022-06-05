@@ -33,6 +33,7 @@ const Login = () => {
       (response) => {
         localStorage.setItem('userid', response.user.uid)
         localStorage.setItem("isAuth", true)
+        (data.type === "user") ? localStorage.setItem('isUser', true) : localStorage.setItem('isUser', false)
         setIsValid(true)
         navigate('/')
       }
@@ -46,6 +47,7 @@ const Login = () => {
 
   const onFormSubmit = (loginData) => {
     userLogin(loginData)
+    console.log(loginData)
   }
 
   return (
@@ -106,22 +108,6 @@ const Login = () => {
             <p className="text-danger">*Enter your password</p>
           )}
         </div>
-
-        {/* <div className="mb-4">
-          <div>Which user are you?</div>
-          <div className="form-check">
-            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-            <label className="form-check-label" htmlFor="flexRadioDefault1">
-              User
-            </label>
-          </div>
-          <div className="form-check">
-            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-            <label className="form-check-label" htmlFor="flexRadioDefault2">
-              NGO
-            </label>
-          </div>
-        </div> */}
 
         <button className="d-block mx-auto btn btn-primary" type="submit">
           Login

@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { getDocs, addDoc, collection } from "firebase/firestore";
 import {db,auth} from '../../firebase-config';
-import { onAuthStateChanged} from "firebase/auth";
+// import { onAuthStateChanged} from "firebase/auth";
 import { NavLink } from 'react-router-dom';
 
 import {createUserWithEmailAndPassword} from 'firebase/auth'
@@ -16,11 +16,13 @@ const Signin = () => {
   const [isPassword, setIsPassword] = useState(false)
   const navigate = useNavigate()
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  // onAuthStateChanged(auth, (currentUser) => {
+  //   setUser(currentUser);
+  // });
 
   const userData=collection(db,"Users");
+
+  
 
   // const onCreate = async (user) =>{
   //   await addDoc(userData, {
@@ -54,7 +56,6 @@ const Signin = () => {
         console.log(response)
         localStorage.setItem("isAuth", true)
         setIsPassword(false)
-        navigate('/')
       }
     )
     .catch(
@@ -63,10 +64,21 @@ const Signin = () => {
         setIsPassword(true)
       }
     )
+    await addDoc(userData, {Uuid: localStorage.getItem('user'), Education: [], History: [], Skillset: [], PhoneNumber: data.number, PreferredLocation: '', StarsEarned: 0, User: (data.type === "user") ? true : false})
+    .then(
+      (response) => {
+        console.log(response)
+      }
+    )
+    .catch(err => console.log(err.message))
+    navigate('/')
   }
 
   const onFormSubmit = (userData) => {
-    
+
+    (userData.type === "user") ? localStorage.setItem('isUser', true) : localStorage.setItem('isUser', false)
+    console.log(typeof userData.type)
+
     if(userData.password === userData.confirmpassword){
       setIsPassword(false)
       userRegister(userData)
@@ -79,7 +91,7 @@ const Signin = () => {
   return (
     <Container fluid>
     <div className="backg1" >
-      <h3 className="text-center p-4 font-link">Sign In</h3>
+      <h3 className="text-center p-4 font-link">Signup</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
         className="signin-form-width bg-light mx-auto border border-dark rounded p-3"
@@ -132,7 +144,7 @@ const Signin = () => {
           )}
         </div>
 
-        {/* <div className="mb-3">
+        <div className="mb-3">
         <label htmlFor="number" className="form-label">
             <div className="d-flex align-items-center gap-2">
               <div>
@@ -153,7 +165,23 @@ const Signin = () => {
           {
             errors.number?.type === "minLength" && <p className="text-danger">*Phone number should be of 10 digits</p>
           }
-        </div> */}
+        </div>
+
+        <div className="mb-4">
+          <div>Which user are you?</div>
+          <div className="form-check">
+            <input className="form-check-input" type="radio" name="flexRadioDefault" value="user" id="flexRadioDefault1" {...register("type")} />
+            <label className="form-check-label" htmlFor="flexRadioDefault1">
+              User
+            </label>
+          </div>
+          <div className="form-check">
+            <input className="form-check-input" type="radio" name="flexRadioDefault" value="ngo" id="flexRadioDefault2" {...register("type")} />
+            <label className="form-check-label" htmlFor="flexRadioDefault2">
+              NGO
+            </label>
+          </div>
+        </div>
 
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
@@ -200,7 +228,7 @@ const Signin = () => {
         </div>
 
         <button className="d-block mx-auto btn btn-primary" type="submit">
-          SignIn
+          Signup
         </button>
       </form>
     

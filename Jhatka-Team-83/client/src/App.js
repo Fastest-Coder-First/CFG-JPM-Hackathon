@@ -45,8 +45,14 @@ const App = () => {
               <Nav className="me-auto">
                 <NavLink className="nav-link" to='/profile'>Profile</NavLink>
                 <NavLink className="nav-link" to="/events">Events</NavLink>
-                <NavLink className="nav-link" to="/addevents">Add Events</NavLink>
-                <NavLink className="nav-link" to="/addposter">Add Poster</NavLink>
+                {
+                  (localStorage.getItem('isUser') === "false") && 
+                  <>
+                    <NavLink className="nav-link" to="/addevents">Add Events</NavLink>
+                    <NavLink className="nav-link" to="/addposter">Add Poster</NavLink>
+                  </>
+                }
+                
               </Nav>
               <div className="ms-auto">
                 <button className="btn btn-primary" onClick={logUserOut}>Logout</button>
@@ -59,7 +65,7 @@ const App = () => {
           (
             <Nav className="ms-auto">
               <NavLink className="nav-link" to='/login'>Login</NavLink>
-              <NavLink className="nav-link" to='/signin'>Sign In</NavLink>
+              <NavLink className="nav-link" to='/signin'>Signup</NavLink>
             </Nav>
           )
         }
