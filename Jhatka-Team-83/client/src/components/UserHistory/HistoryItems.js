@@ -14,7 +14,6 @@ function HistoryItems({items}) {
                 <h4>{title}</h4>
                 <h6 className='price'>Stars: {Stars}/5</h6>
               </header>
-              <p className='item-text'>{Summery}</p>
             </div>
           </article>
         );
