@@ -14,6 +14,8 @@ import AddEducation from './components/AddEducation/AddEducation';
 import PosterForm from './components/PosterForm/PosterForm';
 import Poster from './components/TemplatePoster/Poster';
 import EventDesc from './components/EventDesc/EventDesc';
+import lg from './components/images/logo.png';
+import './index.css';
 
 
 const App = () => {
@@ -31,7 +33,9 @@ const App = () => {
 
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-      <NavLink className="navbar-brand" to="/">Jhatka</NavLink>
+      <NavLink className="navbar-brand" to="/">
+        <img src={lg} style={{height:'25px', width:'100%'}} alt="logo" classname="logoc" />
+      </NavLink>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         {
@@ -41,8 +45,14 @@ const App = () => {
               <Nav className="me-auto">
                 <NavLink className="nav-link" to='/profile'>Profile</NavLink>
                 <NavLink className="nav-link" to="/events">Events</NavLink>
-                <NavLink className="nav-link" to="/addevents">Add Events</NavLink>
-                <NavLink className="nav-link" to="/addposter">Add Poster</NavLink>
+                {
+                  (localStorage.getItem('isUser') === "false") && 
+                  <>
+                    <NavLink className="nav-link" to="/addevents">Add Events</NavLink>
+                    <NavLink className="nav-link" to="/addposter">Add Poster</NavLink>
+                  </>
+                }
+                
               </Nav>
               <div className="ms-auto">
                 <button className="btn btn-primary" onClick={logUserOut}>Logout</button>
@@ -55,7 +65,7 @@ const App = () => {
           (
             <Nav className="ms-auto">
               <NavLink className="nav-link" to='/login'>Login</NavLink>
-              <NavLink className="nav-link" to='/signin'>Sign In</NavLink>
+              <NavLink className="nav-link" to='/signin'>Signup</NavLink>
             </Nav>
           )
         }

@@ -3,6 +3,11 @@
   font-family: 'Lobster', cursive;
 }
 
+.logoc {
+  height: 4px;
+  width: 4px;
+}
+
 :root {
   --color-red: rgb(207, 21, 21);
   --color-pink: rgb(255, 148, 232);
