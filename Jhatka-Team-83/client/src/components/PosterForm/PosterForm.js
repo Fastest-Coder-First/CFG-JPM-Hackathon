@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore'
 import firebase from 'firebase/compat/app';
+import './PosterForm.css';
 import ReactColorPicker from '@super-effective/react-color-picker';
 
 function PosterForm() {
@@ -45,6 +46,7 @@ function PosterForm() {
   return (
     <>
       <Container fluid>
+      <div className='backg'>
       <h3 className="text-center m-4">Add Poster Details</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
@@ -172,7 +174,7 @@ function PosterForm() {
           Submit
         </button>
       </form>
-
+      </div>
     </Container>
 
     </>

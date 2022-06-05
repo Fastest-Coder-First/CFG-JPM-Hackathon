@@ -1,14 +1,15 @@
-.backg5 {
-    background-image: url('../images/profile.jpg'); 
-    /* background-color: #F0858E;  */
+.backg {
+    background-image: url('../images/loginwp.jpg'); 
+    /* background-color: #F0858E; */
     height: 92.489727038626vh;
     overflow: auto;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
-}
-
-.container-fluid {
+  }
+  
+  .container-fluid {
     margin: 0 !important;
     padding: 0 !important;
-}
+  }
+  
