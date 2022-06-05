@@ -10,8 +10,11 @@ function AddSkills() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const localdb = collection(db, "");
+  const [institute, setSkill1] = useState("");
+  const [degree, setSkill2] = useState("");
+  const [percent, setSkill3] = useState("");
+  const [gradyear, setSkill4]=useState("");
+  const localdb = collection(db, "Users");
 
   const onFormSubmit = async(EduData) => {
     console.log(EduData)
@@ -61,8 +64,12 @@ function AddSkills() {
           <input
             type="text"
             id="institute"
+            onChange={(event) => {
+              setSkill1(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("institute", { required: true })}
+            //{...register("institute", { required: true })}
           />
           {errors.institute?.type === "required" && (
             <p className="text-danger">*Enter your Institute</p>
@@ -81,8 +88,12 @@ function AddSkills() {
           <input
             type="text"
             id="degree"
+            onChange={(event) => {
+              setSkill2(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("degree", { required: true })}
+            //{...register("degree", { required: true })}
           />
           {errors.degree?.type === "required" && (
             <p className="text-danger">*Enter your Degree</p>
@@ -101,8 +112,12 @@ function AddSkills() {
           <input
             type="text"
             id="percent"
+            onChange={(event) => {
+              setSkill3(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("percent", { required: true })}
+           // {...register("percent", { required: true })}
           />
           {errors.percent?.type === "required" && (
             <p className="text-danger">*Enter your marks</p>
@@ -121,8 +136,12 @@ function AddSkills() {
           <input
             type="date"
             id="gradyear"
+            onChange={(event) => {
+              setSkill4(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("gradyear", { required: true })}
+            //{...register("gradyear", { required: true })}
           />
           {errors.gradyear?.type === "required" && (
             <p className="text-danger">*Enter your the Data</p>
@@ -131,9 +150,6 @@ function AddSkills() {
 
         <button className="d-block mx-auto btn btn-primary mb-2" type="submit">
           Submit
-        </button>
-        <button className="d-block mx-auto btn btn-primary" type="submit">
-          Submit and Add Another
         </button>
       </form>
 

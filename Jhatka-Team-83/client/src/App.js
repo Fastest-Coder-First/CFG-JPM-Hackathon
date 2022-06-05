@@ -14,9 +14,11 @@ import AddEducation from './components/AddEducation/AddEducation';
 import PosterForm from './components/PosterForm/PosterForm';
 import Poster from './components/TemplatePoster/Poster';
 
+
 const App = () => {
 
   const navigate = useNavigate()
+
 
   const logUserOut = () => {
     localStorage.clear()

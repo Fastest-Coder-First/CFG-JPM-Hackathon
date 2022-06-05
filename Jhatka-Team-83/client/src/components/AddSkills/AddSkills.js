@@ -3,20 +3,22 @@ import { addDoc, collection } from "firebase/firestore";
 import { Container } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import {db} from '../../firebase-config';
+import './AddSkills.css'
 
 function AddSkills() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const {register, handleSubmit, formState: {errors}} = useForm()
+  const [skill1, setSkill1] = useState("");
+  const [skill2, setSkill2] = useState("");
+  const [skill3, setSkill3] = useState("");
+  const [skill4, setSkill4]=useState("");
+  const [skill5, setSkill5]=useState(0);
 
-  const localdb =collection(db, "users");
+  const localdb =collection(db, "Users");
 
   const onFormSubmit = async(skillData) => {
     const {skill1,skill2,skill3,skill4,skill5} = skillData;
     await addDoc(localdb, {
-         skills:{skill1,skill2,skill3,skill4,skill5}
+         skills:[skill1,skill2,skill3,skill4,skill5]
        });
     console.log(skillData)
   }
@@ -51,6 +53,7 @@ function AddSkills() {
   return (
     <>
       <Container fluid>
+      <div className="backg4">
       <h3 className="text-center m-4">Add Your 5 Top Skills</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
@@ -69,8 +72,12 @@ function AddSkills() {
           <input
             type="text"
             id="skill1"
+            onChange={(event) => {
+              setSkill1(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("skill1", { required: true })}
+            //{...register("skill1", { required: true })}
           />
           {errors.skill1?.type === "required" && (
             <p className="text-danger">*Enter your Skill</p>
@@ -89,8 +96,12 @@ function AddSkills() {
           <input
             type="text"
             id="skill2"
+            onChange={(event) => {
+              setSkill2(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("skill2", { required: true })}
+            //{...register("skill2", { required: true })}
           />
           {errors.skill2?.type === "required" && (
             <p className="text-danger">*Enter your Skill</p>
@@ -109,8 +120,12 @@ function AddSkills() {
           <input
             type="text"
             id="percent"
+            onChange={(event) => {
+              setSkill1(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("percent", { required: true })}
+            //{...register("percent", { required: true })}
           />
           {errors.percent?.type === "required" && (
             <p className="text-danger">*Enter your Skill</p>
@@ -129,8 +144,12 @@ function AddSkills() {
           <input
             type="text"
             id="percent"
+            onChange={(event) => {
+              setSkill1(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("percent", { required: true })}
+            //{...register("percent", { required: true })}
           />
           {errors.percent?.type === "required" && (
             <p className="text-danger">*Enter your Skill</p>
@@ -149,8 +168,12 @@ function AddSkills() {
           <input
             type="text"
             id="percent"
+            onChange={(event) => {
+              setSkill1(event.target.value);
+            }
+          }
             className="form-control"
-            {...register("percent", { required: true })}
+            //{...register("percent", { required: true })}
           />
           {errors.percent?.type === "required" && (
             <p className="text-danger">*Enter your Skill</p>
@@ -163,7 +186,7 @@ function AddSkills() {
         </button>
       </form>
 
-
+    </div>
     </Container>
 
     </>

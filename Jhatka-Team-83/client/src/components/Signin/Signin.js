@@ -66,24 +66,20 @@ const Signin = () => {
   }
 
   const onFormSubmit = (userData) => {
-
-    console.log(userData)
     
     if(userData.password === userData.confirmpassword){
       setIsPassword(false)
-      console.log('Success')
       userRegister(userData)
     }
     else{
       setIsPassword(true)
-      console.log('Failure')
     }
   }
 
   return (
-    <Container>
-      
-      <h3 className="text-center m-4">Sign In</h3>
+    <Container fluid>
+    <div className="backg1" >
+      <h3 className="text-center p-4 font-link">Sign In</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
         className="signin-form-width bg-light mx-auto border border-dark rounded p-3"
@@ -207,7 +203,8 @@ const Signin = () => {
           SignIn
         </button>
       </form>
-      
+    
+      </div>
     </Container>
   )
 }
