@@ -307,6 +307,12 @@ header {
     visibility: visible;
   }
 }
+.p-small{
+  font-size:0.75rem;
+}
+.btn-top{
+  margin-bottom: 1rem;
+}
 /*Poster Template*/
 .post {
   width: 100%;

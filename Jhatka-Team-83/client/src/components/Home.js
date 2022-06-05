@@ -21,8 +21,11 @@ function Home() {
                 quia quis? Ipsa officia ad deserunt voluptate quam, nisi odio
                 officiis tempora 
               </p>
-              <h3>Lorem ipsum, dolor sit</h3>
-              <a rel="noopener noreferrer" className='btn btn-dark' href="https://rzp.io/l/2vQKlMPGX4" target="_blank" >Donate Now</a>
+              <h6>Click here to Donate Messages</h6>
+              <a rel="noopener noreferrer" className='btn-top btn btn-dark' href="https://rzp.io/l/2vQKlMPGX4" target="_blank" >Donate Now</a>
+              <h6>Click Here for Analytics</h6>
+              <a rel="noopener noreferrer" className=' btn btn-dark' href="https://analytics.google.com/analytics/web/?authuser=0&hl=en#/p317851256/reports/dashboard?r=firebase-overview" target="_blank" >Check Analytics</a>
+              <p className='p-small'>Only Accessible to Autherized Personel</p>
               
             </div>
             {/*  --------------- main header right side--------------  */}
