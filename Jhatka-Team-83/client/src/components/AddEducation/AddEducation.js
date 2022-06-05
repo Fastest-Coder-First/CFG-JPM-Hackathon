@@ -21,10 +21,10 @@ function AddSkills() {
     console.log(EduData)
     const {institute,degree,percent,gradyear} = EduData;
     await addDoc(localdb, {
-         institute,
+        Education: [institute,
          degree,
          percent,
-         gradyear
+         gradyear]
        });
   }
   

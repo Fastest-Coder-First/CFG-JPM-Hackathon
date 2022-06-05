@@ -13,6 +13,7 @@ import AddSkills from './components/AddSkills/AddSkills';
 import AddEducation from './components/AddEducation/AddEducation';
 import PosterForm from './components/PosterForm/PosterForm';
 import Poster from './components/TemplatePoster/Poster';
+import EventDesc from './components/EventDesc/EventDesc';
 
 
 const App = () => {
@@ -71,10 +72,11 @@ const App = () => {
         <Route path= "/profile" element={<Profile /> } />
         <Route path ="/events" element={<EventsPage />} />
         <Route path="/addevents" element={<Addevents />} />
+        <Route path="/eventDesc" element={<EventDesc />} />
         <Route path="/addposter" element={<PosterForm/>}></Route>
         <Route path="/postertemplate" element={<Poster/>}></Route>
         <Route path = "*" element = {<Errorpage/>}></Route>
-
+        
       </Routes>
     </>
   )

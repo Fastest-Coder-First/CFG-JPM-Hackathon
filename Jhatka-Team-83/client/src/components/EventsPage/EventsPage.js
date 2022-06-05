@@ -1,59 +1,33 @@
 // import React from 'react'
 import './EventsPage.css'
 import { Container, Row, Col } from 'react-bootstrap'
+import {useNavigate} from 'react-router-dom';
 import React, { Component,useState,useEffect } from "react";
 import {db} from '../../firebase-config';
-import {collection,getDocs} from "firebase/firestore";
+import {collection,getDocs,doc} from "firebase/firestore";
 const EventsPage = () => {
 
-  
+  const navigate=useNavigate();
 
-  // const articles = [
-  //   {
-  //     albumId: 1,
-  //     id: 1,
-  //     title: "accusamus beatae ad facilis cum similique qui sunt",
-  //     url: "https://via.placeholder.com/600/92c952",
-  //     thumbnailUrl: "https://via.placeholder.com/150/92c952"
-  //   },
-  //   {
-  //     albumId: 1,
-  //     id: 2,
-  //     title: "reprehenderit est deserunt velit ipsam",
-  //     url: "https://via.placeholder.com/600/771796",
-  //     thumbnailUrl: "https://via.placeholder.com/150/771796"
-  //   },
-  //   {
-  //     albumId: 1,
-  //     id: 3,
-  //     title: "officia porro iure quia iusto qui ipsa ut modi",
-  //     url: "https://via.placeholder.com/600/24f355",
-  //     thumbnailUrl: "https://via.placeholder.com/150/24f355"
-  //   },
-  //   {
-  //     albumId: 1,
-  //     id: 4,
-  //     title: "culpa odio esse rerum omnis laboriosam voluptate repudiandae",
-  //     url: "https://via.placeholder.com/600/d32776",
-  //     thumbnailUrl: "https://via.placeholder.com/150/d32776"
-  //   },
-  //   {
-  //     albumId: 1,
-  //     id: 5,
-  //     title: "natus nisi omnis corporis facere molestiae rerum in",
-  //     url: "https://via.placeholder.com/600/f66b97",
-  //     thumbnailUrl: "https://via.placeholder.com/150/f66b97"
-  //   }
-  // ]
+  
   const [articles, setArticles] = useState([]);
+  const [l,setLength]=useState(0);
   const eventsref=collection(db,"Events");
+  const onReadMore=(articleID,articleTitle,articleDesc,articleUrl)=>{
+    localStorage.setItem('articleID',articleID);
+    localStorage.setItem('articleTitle',articleTitle);
+    localStorage.setItem('articleDesc',articleDesc);
+    localStorage.setItem('articleUrl',articleUrl);
+    navigate('/eventDesc');
+  }
   useEffect(()=>{
     const getEvents=async()=>{
       const data=await getDocs(eventsref);
       setArticles(data.docs.map((doc)=>({...doc.data(),id:doc.id})));
     };
     getEvents();
-  },[])
+    },[])
+  console.log(l);
   return (
     <Container fluid>
     <div className="backg3" >
@@ -71,7 +45,7 @@ const EventsPage = () => {
                   {article.Summary}
                 </div>
                 <div>
-                  <button className="btn btn-danger m-2">Read more</button>
+                  <button className="btn btn-danger m-2" onClick={()=>onReadMore(article.id,article.title,article.Description,article.urlToImage)}>Read more</button>
                 </div>
               </div>
             </Col>
