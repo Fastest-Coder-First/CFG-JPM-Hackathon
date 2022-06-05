@@ -163,7 +163,10 @@ p {
   .profile {
     margin: 5rem 0;
   }
+    
 }
+
+
 
 /*Profile Top*/
 .profile-wrapper{
@@ -277,7 +280,9 @@ header {
 
 .main-herosection-images {
   position: relative;
+  visibility: hidden
 }
+
 
 .main-herosection-images img {
   width: 60%;
@@ -297,6 +302,11 @@ header {
   box-shadow: 0.8rem 0 0.8rem rgba(0, 0, 0, 0.25);
 }
 
+@media screen and (min-width: 900px) {
+  .main-herosection-images {
+    visibility: visible;
+  }
+}
 /*Poster Template*/
 .post {
   width: 100%;
