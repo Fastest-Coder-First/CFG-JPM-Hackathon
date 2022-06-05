@@ -10,6 +10,7 @@ import EventsPage from "./components/EventsPage/EventsPage"
 import Addevents from "./components/AddEvents/Addevents"
 import Errorpage from './components/Error404';
 import AddSkills from './components/AddSkills/AddSkills';
+import EventDesc from './components/EventDesc/EventDesc';
 
 const App = () => {
 
@@ -64,6 +65,7 @@ const App = () => {
         <Route path= "/profile" element={<Profile /> } />
         <Route path ="/events" element={<EventsPage />} />
         <Route path="/addevents" element={<Addevents />} />
+        <Route path="/eventdesc" element={<EventDesc/>}/>
         <Route path = "*" element = {<Errorpage/>}></Route>
       </Routes>
     </>
