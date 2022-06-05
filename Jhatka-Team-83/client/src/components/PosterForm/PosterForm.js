@@ -47,7 +47,7 @@ function PosterForm() {
     <>
       <Container fluid>
       <div className='backg'>
-      <h3 className="text-center m-4">Add Poster Details</h3>
+      <h3 className="text-center font-link p-4">Add Poster Details</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
         className="education-form bg-light mx-auto border border-dark rounded p-3"
