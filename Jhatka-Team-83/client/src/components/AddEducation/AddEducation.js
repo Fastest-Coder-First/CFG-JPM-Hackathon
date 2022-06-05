@@ -3,6 +3,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import {db} from '../../firebase-config';
+import '../AddSkills/AddSkills.css';
 
 function AddSkills() {
   const {
@@ -46,7 +47,8 @@ function AddSkills() {
   return (
     <>
       <Container fluid>
-      <h3 className="text-center m-4">Add Education Details</h3>
+      <div className="backg4">
+      <h3 className="text-center font-link p-4">Add Education Details</h3>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
         className="education-form bg-light mx-auto border border-dark rounded p-3"
@@ -153,7 +155,7 @@ function AddSkills() {
         </button>
       </form>
 
-
+    </div>
     </Container>
 
     </>
