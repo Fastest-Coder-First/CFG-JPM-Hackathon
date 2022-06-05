@@ -298,44 +298,45 @@ header {
 }
 
 /*Poster Template*/
-.container .posts-container .post {
+.post {
   width: 100%;
-  padding: 2rem;
+
   border-radius: .5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.2rem;
 }
 
-.container .posts-container .post .image {
-  height: 40rem;
+.post .image {
+
   width: 100%;
   border-radius: .5rem;
-  object-fit: cover;
+  object-fit: contain;
 }
 
-.container .posts-container .post .date {
-  padding: 2rem 0;
-  font-size: 1.75rem;
+.post .date {
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
   font-weight: 500;
-  color: var(--orange);
+  color: var(--color-pink);
 }
 
-.container .posts-container .post .title {
-  padding-top: 1.5rem;
-  font-size: 2.5rem;
-  color: var(--black);
+.post .title {
+  padding-top: .5rem;
+  font-size: 1.5rem;
+  color: var(--color-grey);
 }
 
-.container .posts-container .post .text {
-  color: var(--black);
-  font-size: 1.8rem;
-  line-height: 1.7;
+.post .text {
+  color: var(--color-grey);
+  font-size: 1rem;
+
 }
 
-.container .posts-container .post h4 {
-  color: var(--orange);
-  font-size: 2rem;
-  line-height: 2;
+.post h4 {
+  color: var(--color-pink);
+  font-size: 1rem;
+
 }
+
 
 
 /*Error Page*/
@@ -408,7 +409,7 @@ header {
   font-size: 14px;
   text-decoration: none;
   text-transform: uppercase;
-  background: #189cf0;
+  background: var(--color-pink);
   display: inline-block;
   padding: 16px 38px;
   border: 2px solid transparent;
@@ -421,8 +422,8 @@ header {
 
 .notfound a:hover {
   background-color: #fff;
-  border-color: #189cf0;
-  color: #189cf0;
+  border-color: var(--color-pink);
+ 
 }
 
 @media only screen and (max-width: 480px) {

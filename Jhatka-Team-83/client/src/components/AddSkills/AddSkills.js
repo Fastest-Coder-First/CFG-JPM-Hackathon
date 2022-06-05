@@ -121,7 +121,7 @@ function AddSkills() {
             type="text"
             id="percent"
             onChange={(event) => {
-              setSkill1(event.target.value);
+              setSkill3(event.target.value);
             }
           }
             className="form-control"
@@ -145,7 +145,7 @@ function AddSkills() {
             type="text"
             id="percent"
             onChange={(event) => {
-              setSkill1(event.target.value);
+              setSkill4(event.target.value);
             }
           }
             className="form-control"
@@ -169,7 +169,7 @@ function AddSkills() {
             type="text"
             id="percent"
             onChange={(event) => {
-              setSkill1(event.target.value);
+              setSkill5(event.target.value);
             }
           }
             className="form-control"
